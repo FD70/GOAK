@@ -14,7 +14,6 @@ func _physics_process(delta):
 		var camera_position : Vector2
 		
 
-		
 		if smoothing_enabled:
 			var weight : float = float(smoothing_distance) / 100
 			var focus_point = lerp(player.global_position, get_global_mouse_position(), (focus_distance)/100)
