@@ -1,6 +1,0 @@
-res://scenes/game.tscn
-res://scene_transition/shock_wave.gdshader
-res://scene_transition/scene_transition_screen.gdshader
-res://scenes/player.tscn
-res://scenes/gun_bullet.tscn
-res://scripts/playerCamera2D.gd
