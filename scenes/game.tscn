@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://lu638l2ut2ag"]
+
+[ext_resource type="PackedScene" uid="uid://bb13swor40hcv" path="res://scenes/player.tscn" id="2_21rta"]
+[ext_resource type="Script" path="res://scripts/playerCamera2D.gd" id="3_3ich4"]
+[ext_resource type="Texture2D" uid="uid://d02qh3gtjp3sn" path="res://assets/mojga.jpg" id="3_obwjf"]
+[ext_resource type="Shader" path="res://scene_transition/shock_wave.gdshader" id="4_drc4m"]
+[ext_resource type="Texture2D" uid="uid://2px5n4vjhd67" path="res://assets/checkers.jpg" id="4_eqc6p"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1amig"]
+normal = Vector2(0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g026l"]
+shader = ExtResource("4_drc4m")
+shader_parameter/strength = 0.08
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.25
+shader_parameter/aberration = 0.425
+shader_parameter/width = 0.04
+shader_parameter/feather = 0.135
+
+[node name="Game" type="Node2D"]
+
+[node name="Checkers" type="Sprite2D" parent="."]
+position = Vector2(-968, -426)
+texture = ExtResource("4_eqc6p")
+
+[node name="WorldBoundary" type="StaticBody2D" parent="."]
+position = Vector2(-10, -50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBoundary"]
+position = Vector2(129, 203)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_1amig")
+
+[node name="Mojga" type="Sprite2D" parent="."]
+position = Vector2(226, -255)
+rotation = -1.5708
+texture = ExtResource("3_obwjf")
+
+[node name="Player" parent="." instance=ExtResource("2_21rta")]
+z_index = 70
+position = Vector2(118, 81)
+
+[node name="PlayerCamera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+position = Vector2(116, 78)
+zoom = Vector2(2, 2)
+position_smoothing_speed = 60.0
+script = ExtResource("3_3ich4")
+player = NodePath("../Player")
+smoothing_enabled = true
+smoothing_distance = 14
+
+[node name="fucking_shader" type="Sprite2D" parent="."]
+visible = false
+z_index = 80
+material = SubResource("ShaderMaterial_g026l")
+position = Vector2(225, 217)
+scale = Vector2(-0.508118, 0.191816)
+texture = ExtResource("4_eqc6p")

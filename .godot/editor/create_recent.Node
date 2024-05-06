@@ -1,0 +1,11 @@
+VisibleOnScreenEnabler2D
+Timer
+CollisionShape2D
+Sprite2D
+CharacterBody2D
+TextureRect
+CanvasModulate
+CanvasLayer
+StaticBody2D
+Camera2D
+Node

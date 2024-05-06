@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccwdg432lsgm5"]
+
+[ext_resource type="Shader" path="res://scene_transition/scene_transition_screen.gdshader" id="1_wb0e0"]
+[ext_resource type="Texture2D" uid="uid://bp1401c6dxv46" path="res://scene_transition/Craters_04-128x128.png" id="2_6a3je"]
+[ext_resource type="Texture2D" uid="uid://cun66vcsjyqcq" path="res://scene_transition/Cracks_02-128x128.png" id="3_7s71a"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vx0e7"]
+shader = ExtResource("1_wb0e0")
+shader_parameter/colour_1 = Color(0, 0, 0, 1)
+shader_parameter/colour_2 = Color(0.835294, 0.290196, 0, 1)
+shader_parameter/tiling_factor = 3.022
+shader_parameter/move_speed = 0.1
+shader_parameter/substraction_speed = 1.496
+shader_parameter/noise_texture = ExtResource("3_7s71a")
+shader_parameter/dissolve_noise_texture = ExtResource("2_6a3je")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gfknq"]
+
+[node name="SceneTransitionScreen" type="CanvasLayer"]
+offset = Vector2(50, 50)
+transform = Transform2D(1, 0, 0, 1, 50, 50)
+follow_viewport_scale = 0.001
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_vx0e7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -51.0
+offset_right = -49.0
+offset_bottom = -51.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_gfknq")
